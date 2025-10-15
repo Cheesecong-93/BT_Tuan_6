@@ -49,11 +49,12 @@ public class Sach {
         return soLuong;
     }
 
-    public void hienThiThongTin() {
-        System.out.println("Ma sach: " + maSach);
-        System.out.println("Ten sach: " + tieuDe);
-        System.out.println("Tac gia: " + tacGia);
-        System.out.println("Nam xuat ban: " + namXuatBan);
-        System.out.println("So luong: " + soLuong);
+    @Override
+    public String toString() {
+        return "Ma sach: " + maSach +
+            "\nTieu de: " + tieuDe +
+            "\nTac gia: " + tacGia +
+            "\nNam xuat ban: " + namXuatBan +
+            "\nSo luong: " + soLuong;
     }
 }
