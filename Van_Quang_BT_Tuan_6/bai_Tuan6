@@ -1,0 +1,239 @@
+import java.util.ArrayList;
+
+// ====================== LOP CHA ======================
+class Sach {
+    private String maSach;
+    private String tieuDe;
+    private String tacGia;
+    private int namXuatBan;
+    private int soLuong;
+
+    public Sach() {
+        this.maSach = "";
+        this.tieuDe = "";
+        this.tacGia = "";
+        this.namXuatBan = 0;
+        this.soLuong = 0;
+    }
+
+    public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong) {
+        this.maSach = maSach;
+        this.tieuDe = tieuDe;
+        this.tacGia = tacGia;
+        this.namXuatBan = namXuatBan;
+        this.soLuong = soLuong;
+    }
+
+    public String getMaSach() {
+        return maSach;
+    }
+
+    public void setMaSach(String maSach) {
+        this.maSach = maSach;
+    }
+
+    public String getTieuDe() {
+        return tieuDe;
+    }
+
+    public void setTieuDe(String tieuDe) {
+        this.tieuDe = tieuDe;
+    }
+
+    public String getTacGia() {
+        return tacGia;
+    }
+
+    public void setTacGia(String tacGia) {
+        this.tacGia = tacGia;
+    }
+
+    public int getNamXuatBan() {
+        return namXuatBan;
+    }
+
+    public void setNamXuatBan(int namXuatBan) {
+        this.namXuatBan = namXuatBan;
+    }
+
+    public int getSoLuong() {
+        return soLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
+    }
+
+    @Override
+    public String toString() {
+        return "Ma sach: " + maSach +
+               "\nTieu de: " + tieuDe +
+               "\nTac gia: " + tacGia +
+               "\nNam xuat ban: " + namXuatBan +
+               "\nSo luong: " + soLuong;
+    }
+}
+
+// ====================== LOP CON 1: SACH GIAO TRINH ======================
+class SachGiaoTrinh extends Sach {
+    private String monHoc;
+    private String capDo;
+
+    public SachGiaoTrinh(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong,
+                         String monHoc, String capDo) {
+        super(maSach, tieuDe, tacGia, namXuatBan, soLuong);
+        this.monHoc = monHoc;
+        this.capDo = capDo;
+    }
+
+    public String getMonHoc() {
+        return monHoc;
+    }
+
+    public void setMonHoc(String monHoc) {
+        this.monHoc = monHoc;
+    }
+
+    public String getCapDo() {
+        return capDo;
+    }
+
+    public void setCapDo(String capDo) {
+        this.capDo = capDo;
+    }
+
+    @Override
+    public String toString() {
+        return "=== SACH GIAO TRINH ===\n" +
+               super.toString() +
+               "\nMon hoc: " + monHoc +
+               "\nCap do: " + capDo;
+    }
+}
+
+// ====================== LOP CON 2: SACH TIEU THUYET ======================
+class SachTieuThuyet extends Sach {
+    private String theLoai;
+    private boolean laSachSeries;
+
+    public SachTieuThuyet(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong,
+                          String theLoai, boolean laSachSeries) {
+        super(maSach, tieuDe, tacGia, namXuatBan, soLuong);
+        this.theLoai = theLoai;
+        this.laSachSeries = laSachSeries;
+    }
+
+    public String getTheLoai() {
+        return theLoai;
+    }
+
+    public void setTheLoai(String theLoai) {
+        this.theLoai = theLoai;
+    }
+
+    public boolean isLaSachSeries() {
+        return laSachSeries;
+    }
+
+    public void setLaSachSeries(boolean laSachSeries) {
+        this.laSachSeries = laSachSeries;
+    }
+
+    @Override
+    public String toString() {
+        return "=== SACH TIEU THUYET ===\n" +
+               super.toString() +
+               "\nThe loai: " + theLoai +
+               "\nLa sach series: " + (laSachSeries ? "Co" : "Khong");
+    }
+}
+
+// ====================== LOP QUAN LY SACH ======================
+class QuanLySach {
+    private ArrayList<Sach> danhSach;
+
+    public QuanLySach() {
+        danhSach = new ArrayList<>();
+    }
+
+    public void themSach(Sach s) {
+        danhSach.add(s);
+    }
+
+    public boolean xoaSach(String maSach) {
+        for (Sach s : danhSach) {
+            if (s.getMaSach().equalsIgnoreCase(maSach)) {
+                danhSach.remove(s);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean capNhatSach(String maSach, Sach sachMoi) {
+        for (int i = 0; i < danhSach.size(); i++) {
+            if (danhSach.get(i).getMaSach().equalsIgnoreCase(maSach)) {
+                danhSach.set(i, sachMoi);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Sach timKiemTheoMa(String maSach) {
+        for (Sach s : danhSach) {
+            if (s.getMaSach().equalsIgnoreCase(maSach)) {
+                return s;
+            }
+        }
+        return null;
+    }
+
+    public void hienThiDanhSach() {
+        for (Sach s : danhSach) {
+            System.out.println(s.toString());
+            System.out.println("-----------------------------");
+        }
+    }
+}
+
+// ====================== LOP CHINH ======================
+public class Test {
+    public static void main(String[] args) {
+        QuanLySach ql = new QuanLySach();
+
+        // Them sach giao trinh
+        SachGiaoTrinh gt1 = new SachGiaoTrinh("GT01", "Lap trinh Java", "Nguyen Van A", 2023, 10, "CNTT", "Dai hoc");
+        SachGiaoTrinh gt2 = new SachGiaoTrinh("GT02", "Toan cao cap", "Tran Van B", 2022, 5, "Toan hoc", "Dai hoc");
+
+        // Them sach tieu thuyet
+        SachTieuThuyet tt1 = new SachTieuThuyet("TT01", "Harry Potter", "J.K. Rowling", 2000, 20, "Gia tuong", true);
+        SachTieuThuyet tt2 = new SachTieuThuyet("TT02", "Dac nhan tam", "Dale Carnegie", 1936, 15, "Tam ly", false);
+
+        // Them vao danh sach
+        ql.themSach(gt1);
+        ql.themSach(gt2);
+        ql.themSach(tt1);
+        ql.themSach(tt2);
+
+        // Hien thi danh sach
+        System.out.println("===== DANH SACH SACH =====");
+        ql.hienThiDanhSach();
+
+        // Tim kiem sach
+        System.out.println("===== TIM KIEM MA 'TT01' =====");
+        Sach tim = ql.timKiemTheoMa("TT01");
+        if (tim != null) {
+            System.out.println(tim);
+        } else {
+            System.out.println("Khong tim thay!");
+        }
+
+        // Xoa sach
+        ql.xoaSach("GT02");
+
+        // Hien thi sau khi xoa
+        System.out.println("===== SAU KHI XOA =====");
+        ql.hienThiDanhSach();
+    }
+}
