@@ -18,6 +18,7 @@ public class QuanLySach {
     }
 
     public void Nhap() {
+        @SuppressWarnings("resource") 
         Scanner sc = new Scanner(System.in);
 
         for (int i = 0; i < soLuongSach; i++) {
@@ -26,6 +27,7 @@ public class QuanLySach {
 
             String maSach, tieuDe, tacGia;
             int namXuatBan, soLuong;
+            double giaCoBan;
 
             System.out.print("Nhap ma sach: ");
             maSach = sc.nextLine();
@@ -37,6 +39,8 @@ public class QuanLySach {
             namXuatBan = Integer.parseInt(sc.nextLine());
             System.out.print("Nhap so luong: ");
             soLuong = Integer.parseInt(sc.nextLine());
+            System.out.print("Nhap gia co ban: ");
+            giaCoBan = Double.parseDouble(sc.nextLine());
 
             switch (loai) {
                 case 'G': {
@@ -45,7 +49,7 @@ public class QuanLySach {
                     System.out.print("Nhap cap do (VD: Dai hoc, Pho thong): ");
                     String capDo = sc.nextLine();
 
-                    danhSachSach[i] = new SachGiaoTrinh(monHoc, capDo, maSach, tieuDe, tacGia, namXuatBan, soLuong);
+                    danhSachSach[i] = new SachGiaoTrinh(monHoc, capDo, maSach, tieuDe, tacGia, namXuatBan, soLuong, giaCoBan);
                     break;
                 }
                 case 'T': {
@@ -54,7 +58,7 @@ public class QuanLySach {
                     System.out.print("Sach thuoc series khong? (true/false): ");
                     boolean laSeries = Boolean.parseBoolean(sc.nextLine());
 
-                    danhSachSach[i] = new SachTieuThuyet(theLoai, laSeries, maSach, tieuDe, tacGia, namXuatBan, soLuong);
+                    danhSachSach[i] = new SachTieuThuyet(theLoai, laSeries, maSach, tieuDe, tacGia, namXuatBan, soLuong, giaCoBan);
                     break;
                 }
                 default:

@@ -5,8 +5,8 @@ public class SachGiaoTrinh extends Sach {
     public SachGiaoTrinh() {
         super();
     }
-    public SachGiaoTrinh(String monHoc, String capDo, String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong) {
-        super(maSach, tieuDe, tacGia, namXuatBan, soLuong);
+    public SachGiaoTrinh(String monHoc, String capDo, String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan) {
+        super(maSach, tieuDe, tacGia, namXuatBan, soLuong, giaCoBan);
         this.monHoc = monHoc;
         this.capDo = capDo;
     }
@@ -25,9 +25,15 @@ public class SachGiaoTrinh extends Sach {
     }
 
     @Override
+    public double GiaBan() {
+        return this.getGiaCoBan() + ((2025 - this.getNamXuatBan()) * 5000);
+    }
+
+    @Override
     public String toString() {
         return super.toString() + 
             "\nMon hoc: " + monHoc + 
-            "\nCap do: " + capDo;
+            "\nCap do: " + capDo +
+            "\nGia ban: " + GiaBan();
     }
 }

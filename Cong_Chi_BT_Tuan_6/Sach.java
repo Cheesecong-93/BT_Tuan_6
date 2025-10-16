@@ -1,17 +1,19 @@
-public class Sach {
+public abstract class Sach {
     private String maSach;
     private String tieuDe;
     private String tacGia;
     private int namXuatBan;
     private int soLuong;
+    private double giaCoBan;
 
     public Sach(){}
-    public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong){
+    public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan){
         this.maSach = maSach;
         this.tieuDe = tieuDe;
         this.tacGia = tacGia;
         this.namXuatBan = namXuatBan;
         this.soLuong = soLuong;
+        this.giaCoBan = giaCoBan;
     }
     
     public void setMaSach(String maSach) {
@@ -49,12 +51,22 @@ public class Sach {
         return soLuong;
     }
 
+    public double getGiaCoBan() {
+        return giaCoBan;
+    }
+    public void setGiaCoBan(double giaCoBan) {
+        this.giaCoBan = giaCoBan;
+    }
+
     @Override
     public String toString() {
         return "Ma sach: " + maSach +
             "\nTieu de: " + tieuDe +
             "\nTac gia: " + tacGia +
             "\nNam xuat ban: " + namXuatBan +
-            "\nSo luong: " + soLuong;
+            "\nSo luong: " + soLuong + 
+            "\nGia co ban: " + giaCoBan;
     }
+
+    public abstract double GiaBan();
 }

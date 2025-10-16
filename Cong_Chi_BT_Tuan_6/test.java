@@ -3,6 +3,8 @@ import java.util.Scanner;
 
 public class test {
     public static void main(String[] args) {
+        
+        @SuppressWarnings("resource") // bo qua warning "sc is never closed"
         Scanner sc = new Scanner(System.in);
         QuanLySach qlSach = null;
 
